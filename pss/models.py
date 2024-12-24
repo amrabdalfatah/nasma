@@ -1,5 +1,7 @@
+from django.conf import settings
 from django.db import models
 
+ 
 # Create your models here.
 class PSSTest(models.Model):
   # test_id
@@ -19,8 +21,12 @@ class QustionsTest(models.Model):
   
 
 class PSSResult(models.Model):
+  user_id = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+  test_id = models.ForeignKey(PSSTest, on_delete=models.CASCADE)
   result_id = models.IntegerField()
   score = models.IntegerField()
-  test_date = models.DateTimeField(auto_created=True)
+  test_date = models.DateTimeField(auto_now_add=True)
   level = models.CharField(max_length=10)
-  # user_id, test_id
+  
+  def __str__(self):
+    return self.score

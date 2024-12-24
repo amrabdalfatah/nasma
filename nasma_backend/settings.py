@@ -37,12 +37,21 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    # 3-party apps
+    "rest_framework",
     # Local
     "nasma.apps.NasmaConfig", # Default App
+    "accounts.apps.AccountsConfig",
     "article.apps.ArticleConfig", # Articles App
     "breathing.apps.BreathingConfig",
     "pss.apps.PssConfig",
 ]
+
+REST_FRAMEWORK = {
+  "DEFAULT_PERMISSION_CLASSES": [
+    "rest_framework.permissions.AllowAny",
+    ],
+}
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
@@ -126,3 +135,5 @@ STATIC_URL = "static/"
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+AUTH_USER_MODEL = "accounts.CustomUser"
