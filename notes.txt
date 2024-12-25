@@ -20,3 +20,7 @@ DATABASES = {
 python manage.py makemigrations
 
 python manage.py migrate
+
+reset password => check email is already exists or not
+
+QustionsTest => multichoice fix it

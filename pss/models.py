@@ -12,9 +12,12 @@ class PSSTest(models.Model):
     return self.title
   
 class QustionsTest(models.Model):
-  # question_id
   content = models.CharField(max_length=400)
-  multichoiceanswer = models.CharField(max_length=100)
+  answer_zero = models.CharField(max_length=40, default="Never")
+  answer_one = models.CharField(max_length=40, default="Almost Never")
+  answer_two = models.CharField(max_length=40, default="Sometimes")
+  answer_three = models.CharField(max_length=40, default="Fairly Often")
+  answer_four = models.CharField(max_length=40, default="Very Often")
 
   def __str__(self):
     return self.content
@@ -23,7 +26,6 @@ class QustionsTest(models.Model):
 class PSSResult(models.Model):
   user_id = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
   test_id = models.ForeignKey(PSSTest, on_delete=models.CASCADE)
-  result_id = models.IntegerField()
   score = models.IntegerField()
   test_date = models.DateTimeField(auto_now_add=True)
   level = models.CharField(max_length=10)

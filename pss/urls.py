@@ -1,3 +1,8 @@
-from django.urls import path, include
+from django.urls import path
 
-urlpatterns = []
+from .views import QuestionsList, QuestionDetail
+
+urlpatterns = [
+  path("question/<int:pk>/", QuestionDetail.as_view(), name="question_detail"),
+  path("questions/", QuestionsList.as_view(), name="questions_list"),
+]
